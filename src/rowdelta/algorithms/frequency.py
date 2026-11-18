@@ -41,10 +41,6 @@ def count_identifier_frequencies(
     This function is intentionally unimplemented as the current learning
     assignment. Do not replace the placeholder until implementing the task.
     """
-    """
-    Complexity:
-    Expected O(n) time for n identifiers and O(u) extra space for u
-    distinct identifiers.
-    """
+    
     return Counter(identifiers)
     
