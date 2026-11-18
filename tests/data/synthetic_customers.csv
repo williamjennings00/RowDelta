@@ -1,0 +1,6 @@
+customer_id,region,status
+C001,north,active
+C002,south,active
+C003,west,inactive
+C004,east,active
+C005,north,inactive
