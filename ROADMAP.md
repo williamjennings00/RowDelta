@@ -10,11 +10,14 @@ Assignments are deliberately introduced one at a time. Only the current assignme
 
 ## Current assignment
 
-1. **Frequency counting** — implement `count_identifier_frequencies(identifiers: Iterable[Hashable]) -> dict[Hashable, int]` in `src/rowdelta/algorithms/frequency.py`. This will support later record-key analysis and deterministic summaries. Assignment contract and tests are in that module and `tests/algorithms/test_frequency.py`.
+2. **Duplicate detection** — implement `find_duplicate_identifiers(identifiers: Iterable[Hashable]) -> list[Hashable]` in `src/rowdelta/algorithms/duplicates.py`. This will support CSV key validation by reporting repeated record identifiers in a deterministic order. Assignment contract and tests are in that module and `tests/algorithms/test_duplicates.py`.
+
+## Completed assignments
+
+1. **Frequency counting** — `count_identifier_frequencies(identifiers: Iterable[Hashable]) -> dict[Hashable, int]` in `src/rowdelta/algorithms/frequency.py`. Uses `Counter` and supports one-shot iterables. Contract tests are in `tests/algorithms/test_frequency.py`.
 
 ## Upcoming assignments
 
-2. Duplicate detection using sets.
 3. Matching records by primary key.
 4. Detecting added and removed records.
 5. Comparing sorted datasets using two pointers.
