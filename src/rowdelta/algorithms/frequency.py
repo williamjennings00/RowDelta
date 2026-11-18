@@ -1,7 +1,7 @@
 """Frequency-counting assignment for record identifiers."""
 
 from collections.abc import Hashable, Iterable
-
+from collections import Counter
 
 def count_identifier_frequencies(
     identifiers: Iterable[Hashable],
@@ -41,4 +41,10 @@ def count_identifier_frequencies(
     This function is intentionally unimplemented as the current learning
     assignment. Do not replace the placeholder until implementing the task.
     """
-    raise NotImplementedError("Assignment 1: implement identifier frequency counting")
+    """
+    Complexity:
+    Expected O(n) time for n identifiers and O(u) extra space for u
+    distinct identifiers.
+    """
+    return Counter(identifiers)
+    
