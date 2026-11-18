@@ -5,7 +5,6 @@ import pytest
 from rowdelta.algorithms.matching import match_records_by_key
 
 
-@pytest.mark.skip(reason="Assignment 3: implement match_records_by_key first")
 def test_matches_records_in_left_input_order_and_omits_unmatched() -> None:
     left = [
         {"id": "c", "name": "Casey"},
@@ -24,7 +23,6 @@ def test_matches_records_in_left_input_order_and_omits_unmatched() -> None:
     ]
 
 
-@pytest.mark.skip(reason="Assignment 3: implement match_records_by_key first")
 @pytest.mark.parametrize(
     ("left", "right"),
     [
@@ -39,7 +37,6 @@ def test_rejects_duplicate_keys(
         match_records_by_key(left, right, "id")
 
 
-@pytest.mark.skip(reason="Assignment 3: implement match_records_by_key first")
 @pytest.mark.parametrize(
     ("left", "right", "key"),
     [
@@ -55,7 +52,6 @@ def test_rejects_missing_or_empty_key(
         match_records_by_key(left, right, key)
 
 
-@pytest.mark.skip(reason="Assignment 3: implement match_records_by_key first")
 @pytest.mark.parametrize(
     ("left", "right"),
     [
@@ -72,6 +68,3 @@ def test_rejects_empty_or_repeated_empty_key_values(
         match_records_by_key(left, right, "id")
 
 
-def test_assignment_placeholder_is_explicit() -> None:
-    with pytest.raises(NotImplementedError, match="Assignment 3"):
-        match_records_by_key([], [], "id")

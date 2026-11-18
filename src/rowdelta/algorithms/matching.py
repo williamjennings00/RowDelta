@@ -1,7 +1,7 @@
 """Primary-key record-matching assignment."""
 
 from collections.abc import Iterable, Mapping
-from collections import Counter
+
 
 def match_records_by_key(
     left_records: Iterable[Mapping[str, str]],
@@ -44,40 +44,40 @@ def match_records_by_key(
             primary-key value is empty, or a primary-key value is repeated
             within either dataset.
 
- 
+    Complexity:
+        Expected O(L + R) time and O(L + R) extra space for L left-side and
+        R right-side records.
     """
-    match_records_by_key = []
-    dict_right_records = {}
+    if not key:
+        raise ValueError("key must be a non-empty field name")
 
-    for index, value in enumerate(right_records):
-        if value[key] in dict_right_records:
-            raise ValueError
-        else:
-            dict_right_records[value[key]] = value
+    right_by_key: dict[str, Mapping[str, str]] = {}
+    for record_number, record in enumerate(right_records, start=1):
+        if key not in record:
+            raise ValueError(f"right record {record_number} is missing key {key!r}")
 
+        record_key = record[key]
+        if record_key == "":
+            raise ValueError(f"right record {record_number} has an empty key {key!r}")
+        if record_key in right_by_key:
+            raise ValueError(f"duplicate key {record_key!r} in right records")
 
+        right_by_key[record_key] = record
 
+    seen_left_keys: set[str] = set()
+    matches: list[tuple[Mapping[str, str], Mapping[str, str]]] = []
+    for record_number, record in enumerate(left_records, start=1):
+        if key not in record:
+            raise ValueError(f"left record {record_number} is missing key {key!r}")
 
-    for index, value in enumerate(left_records):
-        if value[key] in dict_right_records:
-            match_records_by_key.append((value,dict_right_records[value[key]]))
+        record_key = record[key]
+        if record_key == "":
+            raise ValueError(f"left record {record_number} has an empty key {key!r}")
+        if record_key in seen_left_keys:
+            raise ValueError(f"duplicate key {record_key!r} in left records")
 
-    duplicate = set()
-    for index, value in enumerate(match_records_by_key):
-        if value[0][key] in duplicate or value[1][key] in duplicate:
-            raise ValueError
-        else:
-            duplicate.add(value[0][key])
+        seen_left_keys.add(record_key)
+        if record_key in right_by_key:
+            matches.append((record, right_by_key[record_key]))
 
-        if value[0][key] == "" or value[1][key] == "":
-            raise ValueError
-
-        if value[0] == "" or value[1] == "":
-            raise ValueError
-
-        if value[0][key] != value[1][key]:
-            raise ValueError
-
-
-    return match_records_by_key
-    
+    return matches
