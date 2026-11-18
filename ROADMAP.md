@@ -10,15 +10,15 @@ Assignments are deliberately introduced one at a time. Only the current assignme
 
 ## Current assignment
 
-2. **Duplicate detection** — implement `find_duplicate_identifiers(identifiers: Iterable[Hashable]) -> list[Hashable]` in `src/rowdelta/algorithms/duplicates.py`. This will support CSV key validation by reporting repeated record identifiers in a deterministic order. Assignment contract and tests are in that module and `tests/algorithms/test_duplicates.py`.
+3. **Match records by primary key** — implement `match_records_by_key(left_records: Iterable[Mapping[str, str]], right_records: Iterable[Mapping[str, str]], key: str) -> list[tuple[Mapping[str, str], Mapping[str, str]]]` in `src/rowdelta/algorithms/matching.py`. This will pair rows across CSV snapshots so later assignments can report changed records. Assignment contract and tests are in that module and `tests/algorithms/test_matching.py`.
 
 ## Completed assignments
 
 1. **Frequency counting** — `count_identifier_frequencies(identifiers: Iterable[Hashable]) -> dict[Hashable, int]` in `src/rowdelta/algorithms/frequency.py`. Uses `Counter` and supports one-shot iterables. Contract tests are in `tests/algorithms/test_frequency.py`.
+2. **Duplicate detection** — `find_duplicate_identifiers(identifiers: Iterable[Hashable]) -> list[Hashable]` in `src/rowdelta/algorithms/duplicates.py`. Reports repeated identifiers once, in the order they become duplicates. Contract tests are in `tests/algorithms/test_duplicates.py`.
 
 ## Upcoming assignments
 
-3. Matching records by primary key.
 4. Detecting added and removed records.
 5. Comparing sorted datasets using two pointers.
 6. Finding the top K most frequently modified columns.

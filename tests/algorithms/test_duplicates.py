@@ -5,7 +5,6 @@ import pytest
 from rowdelta.algorithms.duplicates import find_duplicate_identifiers
 
 
-@pytest.mark.skip(reason="Assignment 2: implement find_duplicate_identifiers first")
 @pytest.mark.parametrize(
     ("values", "expected"),
     [
@@ -22,13 +21,9 @@ def test_finds_duplicate_identifiers(
     assert find_duplicate_identifiers(values) == expected
 
 
-@pytest.mark.skip(reason="Assignment 2: implement find_duplicate_identifiers first")
 def test_accepts_one_shot_iterable_and_orders_by_second_appearance() -> None:
     values = (item for item in ["z", "a", "z", "b", "a", "b"])
 
     assert find_duplicate_identifiers(values) == ["z", "a", "b"]
 
 
-def test_assignment_placeholder_is_explicit() -> None:
-    with pytest.raises(NotImplementedError, match="Assignment 2"):
-        find_duplicate_identifiers([])

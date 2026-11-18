@@ -4,7 +4,7 @@ RowDelta is an early-stage command-line utility for comparing, validating, and a
 
 ## Status
 
-This project is in pre-alpha. The `validate-csv` command and packaging/quality infrastructure are implemented. Record comparison and analysis are not implemented. The current learning assignment is an intentionally unimplemented frequency-counting function; see [ROADMAP.md](ROADMAP.md).
+This project is in pre-alpha. The `validate-csv` command and packaging/quality infrastructure are implemented. Record comparison and analysis are not implemented. The current learning assignment is primary-key matching; see [ROADMAP.md](ROADMAP.md).
 
 ## Requirements
 
